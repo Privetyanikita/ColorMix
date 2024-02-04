@@ -47,7 +47,6 @@ final class ViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         setupViews()
         setupConstrains()
         addAction()
@@ -66,6 +65,7 @@ final class ViewController: UIViewController {
 
     //MARK: - PrivateMethods
     private func setupViews(){
+        view.backgroundColor = .systemBackground
         view.addSubview(colorView1)
         view.addSubview(colorView2)
         view.addSubview(colorResultView)
