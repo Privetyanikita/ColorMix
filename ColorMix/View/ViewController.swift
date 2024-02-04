@@ -38,6 +38,27 @@ final class ColorViewController: UIViewController {
         return view
     }()
     
+    private let nameColorLabel1: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 20)
+        return label
+    }()
+    
+    private let nameColorLabel2: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 20)
+        return label
+    }()
+    
+    private let nameColorResultLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 20)
+        return label
+    }()
+    
     private var selectedView: UIView?
     
     //MARK: - Lifecycle
@@ -54,6 +75,7 @@ final class ColorViewController: UIViewController {
         colorView1.backgroundColor = viewModel.colorData.color1
         colorView2.backgroundColor = viewModel.colorData.color2
         updateColorResultView()
+        updateNameColorLabel()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -67,6 +89,9 @@ final class ColorViewController: UIViewController {
         view.addSubview(colorView1)
         view.addSubview(colorView2)
         view.addSubview(colorResultView)
+        view.addSubview(nameColorLabel1)
+        view.addSubview(nameColorLabel2)
+        view.addSubview(nameColorResultLabel)
     }
     
     private func addAction() {
@@ -76,17 +101,25 @@ final class ColorViewController: UIViewController {
     
     private func updateColorResultView() {
         colorResultView.backgroundColor = viewModel.mixedColor
+        nameColorResultLabel.text = viewModel.colorName(from: viewModel.mixedColor)
     }
     
     @objc private func changeColor(_ sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
         let vc = UIColorPickerViewController()
         vc.delegate = self
+        
         if let color = view.backgroundColor {
             vc.selectedColor = color
         }
+        
         selectedView = view
         present(vc, animated: true)
+    }
+    
+    private func updateNameColorLabel() {
+        nameColorLabel1.text = viewModel.colorName(from: viewModel.colorData.color1)
+        nameColorLabel2.text = viewModel.colorName(from: viewModel.colorData.color2)
     }
 
 }
@@ -96,12 +129,17 @@ extension ColorViewController: UIColorPickerViewControllerDelegate {
         guard let selectedView = selectedView else { return }
         let color = viewController.selectedColor
         selectedView.backgroundColor = color
+        
         if selectedView.tag == 1 {
             viewModel.colorData.color1 = color
-        } else if selectedView.tag == 2 {
+        }
+        
+        else if selectedView.tag == 2 {
             viewModel.colorData.color2 = color
         }
+        
         updateColorResultView()
+        updateNameColorLabel()
     }
 }
 
@@ -123,6 +161,21 @@ extension ColorViewController {
             make.top.equalTo(colorView2.snp.bottom).offset(100)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(100)
+        }
+        
+        nameColorLabel1.snp.makeConstraints { make in
+            make.bottom.equalTo(colorView1.snp.top).inset(-20)
+            make.centerX.equalTo(colorView1.snp.centerX)
+        }
+        
+        nameColorLabel2.snp.makeConstraints { make in
+            make.bottom.equalTo(colorView2.snp.top).inset(-20)
+            make.centerX.equalTo(colorView2.snp.centerX)
+        }
+        
+        nameColorResultLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(colorResultView.snp.top).inset(-20)
+            make.centerX.equalTo(colorResultView.snp.centerX)
         }
     }
 }
