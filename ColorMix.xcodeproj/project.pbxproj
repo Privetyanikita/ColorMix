@@ -66,9 +66,7 @@
 				84A431932B6FE5D9006C8FA3 /* Model */,
 				84A431922B6FE5D1006C8FA3 /* View */,
 				84A431912B6FE5B8006C8FA3 /* ModelView */,
-				84A431852B6FE4EF006C8FA3 /* Assets.xcassets */,
-				84A431872B6FE4EF006C8FA3 /* LaunchScreen.storyboard */,
-				84A4318A2B6FE4EF006C8FA3 /* Info.plist */,
+				84A4319D2B701BBE006C8FA3 /* SupportingFail */,
 			);
 			path = ColorMix;
 			sourceTree = "<group>";
@@ -104,6 +102,16 @@
 				84A431962B6FE602006C8FA3 /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		84A4319D2B701BBE006C8FA3 /* SupportingFail */ = {
+			isa = PBXGroup;
+			children = (
+				84A431852B6FE4EF006C8FA3 /* Assets.xcassets */,
+				84A431872B6FE4EF006C8FA3 /* LaunchScreen.storyboard */,
+				84A4318A2B6FE4EF006C8FA3 /* Info.plist */,
+			);
+			path = SupportingFail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R5SS3C487L;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ColorMix/Info.plist;
+				INFOPLIST_FILE = ColorMix/SupportingFail/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -365,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R5SS3C487L;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ColorMix/Info.plist;
+				INFOPLIST_FILE = ColorMix/SupportingFail/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

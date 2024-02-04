@@ -5,4 +5,9 @@
 //  Created by Admin on 04.02.2024.
 //
 
-import Foundation
+import UIKit
+
+struct ColorData {
+    var color1: UIColor
+    var color2: UIColor
+}
