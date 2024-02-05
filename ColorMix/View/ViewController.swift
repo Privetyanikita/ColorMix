@@ -59,6 +59,13 @@ final class ColorViewController: UIViewController {
         return label
     }()
     
+    private let swapLanguageSegment: UISegmentedControl = {
+        let segment = UISegmentedControl(items: ["Eng", "Ru"])
+        segment.selectedSegmentIndex = 0
+        segment.addTarget(ColorViewController.self, action: #selector(swapLanguage), for: .valueChanged)
+        return segment
+    }()
+    
     private var selectedView: UIView?
     
     //MARK: - Lifecycle
@@ -92,6 +99,7 @@ final class ColorViewController: UIViewController {
         view.addSubview(nameColorLabel1)
         view.addSubview(nameColorLabel2)
         view.addSubview(nameColorResultLabel)
+        view.addSubview(swapLanguageSegment)
     }
     
     private func addAction() {
@@ -115,6 +123,10 @@ final class ColorViewController: UIViewController {
         
         selectedView = view
         present(vc, animated: true)
+    }
+    
+    @objc private func swapLanguage(){
+        print("Swapped Language")
     }
     
     private func updateNameColorLabel() {
@@ -176,6 +188,11 @@ extension ColorViewController {
         nameColorResultLabel.snp.makeConstraints { make in
             make.bottom.equalTo(colorResultView.snp.top).inset(-20)
             make.centerX.equalTo(colorResultView.snp.centerX)
+        }
+        
+        swapLanguageSegment.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
     }
 }
