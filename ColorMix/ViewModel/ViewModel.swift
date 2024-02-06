@@ -80,7 +80,6 @@ extension UIColor {
             "Orange": .orange,
             "Purple": .purple,
             "Brown": .brown,
-            "Clear": .clear
         ]
         
         var closestColorName: String?
